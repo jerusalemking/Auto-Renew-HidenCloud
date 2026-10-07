@@ -57,7 +57,7 @@ def get_current_ip(proxy_server=None):
         resp = requests.get("https://api.ip.sb/ip", proxies=proxies, timeout=15)
         # log(f"请求出口IP完成, status={resp.status_code}")
         if resp.status_code == 200:
-            return resp.text.strip()
+            return resp.text.strip().split(".")[0] + ".***.***.***"
         return "获取失败"
     except Exception as e:
         log(f"❌ 获取出口IP失败: {e}")
